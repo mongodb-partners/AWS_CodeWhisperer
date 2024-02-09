@@ -1,0 +1,6 @@
+fastapi~=0.109.2
+pymongo~=4.6.1
+python-dotenv~=1.0.1
+pydantic-mongo~=2.1.0
+uvicorn~=0.27.0
+certifi~=2024.2.2
