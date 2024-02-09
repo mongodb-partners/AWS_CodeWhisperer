@@ -13,8 +13,9 @@ async def lifespan(app: FastAPI):
     # startup
     app.mongodb_client = MongoClient(config["ATLAS_URI"], tlsCAFile=certifi.where())
     app.db = app.mongodb_client[config["DB_NAME"]]
-    print("Connected to the MongoDB database!")
-    yield
+
+    yield # serve the API
+
     # shutdown
     app.mongodb_client.close()
 
