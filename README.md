@@ -88,8 +88,11 @@ def post_totals_per_tag(request: Request):
     return list(request.app.db["posts"].aggregate([
         {"$unwind": "$tags"},
         {"$group": {"_id": "$tags", "total": {"$sum": 1}}}
+        # {"$project": {"_id": 0, "tag": "$_id", "total": 1}} # valid (CodeWhisperer might suggests this)
     ]))
 ```
+
+> (⚠️ it's important the result is converted into a **list**. AKA: `list(`)
 
 CodeWhisperer might suggest additional lines (often comments showing what the output looks like). You can discard those lines or use _`Cmd/CTRL`+`->`_ to accept just the code portion of its suggestion.
 
