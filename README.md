@@ -98,6 +98,29 @@ CodeWhisperer might suggest additional lines (often comments showing what the ou
 
 #### Step 6
 
+Select the aggregation the body of the function that was generated in the previous step.
+In the example above, this is the portion that should be selected:
+
+```txt
+    return list(request.app.db["posts"].aggregate([
+        {"$unwind": "$tags"},
+        {"$group": {"_id": "$tags", "total": {"$sum": 1}}}
+        # {"$project": {"_id": 0, "tag": "$_id", "total": 1}} # valid (CodeWhisperer might suggests this)
+    ]))
+```
+
+In the Activity Bar, select Amazon Q and ask the following to it:
+
+```txt
+**"Explain selected code"**
+```
+
+> (ℹ️ feel free to click in the "explain selected code" suggestion if it shows up)
+
+Quickly read the response and highlight how useful it is for developers to quickly understand portions of the code that they are not familiar with.
+
+#### Step 7
+
 Debrief on what has been shown
 
 ```sh
