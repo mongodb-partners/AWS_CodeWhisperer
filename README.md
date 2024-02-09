@@ -72,7 +72,7 @@ Now tell how it's required to have an API endpoint that gives the total amount o
 @router.get("/tags", response_description="Get the total of posts of each tag")
 def post_totals_per_tag(request: Request):
     """
-    Get the total of posts of each tag using MongoDB facets
+    Get the total of posts of each tag using MongoDB
     """
     █
 ```
@@ -83,7 +83,7 @@ Place your cursor on the position of the block character above (`	█`) and Code
 @router.get("/tags", response_description="Get the total of posts of each tag")
 def post_totals_per_tag(request: Request):
     """
-    Get a list of total of posts of each tag using MongoDB facets
+    Get a list of total of posts of each tag using MongoDB
     """
     return list(request.app.db["posts"].aggregate([
         {"$unwind": "$tags"},
