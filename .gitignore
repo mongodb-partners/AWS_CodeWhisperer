@@ -11,3 +11,6 @@ venv
 
 # pytype static type analyzer
 .pytype/
+
+# other
+.DS_Store
