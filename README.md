@@ -53,7 +53,7 @@ The `permalink` is a customizable string that can reflect the actual article tit
 Try to access a document by its permalink
 http://127.0.0.1:8000/posts/jNsgObovWyKEoXNydtis
 
-> (ℹ️ The `ObjectId` and the `permalink` above already exist in the sample dataset)
+> ℹ️ The `ObjectId` and the `permalink` above already exist in the sample dataset
 
 ### Step 3
 
@@ -91,7 +91,7 @@ http://127.0.0.1:8000/posts/jNsgObovWyKEoXNydtis
 Now tell the audience about a requirement of displaying the total amount of posts of each tag. Explain how it would require a new route to run a MongoDB aggregation to make it possible.
 
 **before** `@router.get("/{permalink}"` add the following code snippet:
-> (⚠️ it's important this is added before the permalink route!)
+> ⚠️ it's important this is added before the permalink route!
 
 ```py
 @router.get("/tags", response_description="Get a total of posts of each tag")
@@ -117,16 +117,16 @@ def post_totals_per_tag(request: Request):
     ]))
 ```
 
-> (⚠️ it's important the result is converted into a **list**. AKA: `list(`)
+> ⚠️ it's important the result is converted into a **list**. AKA: `list()`
 
-> (ℹ️ CodeWhisperer might suggest additional lines (often comments showing what the output looks like). You can discard those lines or use _`Cmd/CTRL`+`->`_ to accept just the code portion of its suggestion.)
+> ℹ️ CodeWhisperer might suggest additional lines (often comments showing what the output looks like). You can discard those lines or use _`Cmd/CTRL`+`->`_ to accept just the code portion of its suggestion.
 
 ### Step 6
 
 1 - Select the aggregation the body of the function that was generated in the previous step.
 In the example above, this is the portion that should be selected:
 
-```txt
+```py
     return list(request.app.db["posts"].aggregate([
         {"$unwind": "$tags"},
         {"$group": {"_id": "$tags", "total": {"$sum": 1}}}
@@ -138,7 +138,7 @@ In the example above, this is the portion that should be selected:
 
 3 - **"`Explain selected code`"**
 
-> (ℹ️ feel free to click in the "explain selected code" suggestion if it shows up)
+> ℹ️ feel free to click in the "explain selected code" suggestion if it shows up
 
 4 - Quickly read the response and highlight how useful it is for developers to quickly understand portions of the code that they are not familiar with.
 
